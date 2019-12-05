@@ -3,10 +3,10 @@
     <section class="login-box">
       <h1>系统登录</h1>
       <div class="wrap-input">
-        <input type="text" placeholder="请输入用户名" />
+        <input type="text" placeholder="请输入用户名" v-model='username' />
       </div>
       <div class="wrap-input">
-        <input type="password" placeholder="请输入密码" />
+        <input type="password" placeholder="请输入密码" v-model="password"/>
       </div>
       <div class="checkbox" @click="check">
         <i :class="{checked:ischecked}"></i>
@@ -18,19 +18,21 @@
 </template>
 
 <script>
+// import { postRequest } from "../utils/api";
+// import { putRequest } from "../utils/api";
 export default {
   data() {
     return {
-      ischecked: false
+      ischecked: false,
+      username:'12345',
+      password:'12345'
     };
   },
   methods: {
     check() {
       this.ischecked = this.ischecked ? false : true;
     },
-    submit_login:()=> {
-      
-    }
+    submit_login: () => {}
   }
 };
 </script>
@@ -39,13 +41,13 @@ export default {
 .login-box {
   position: relative;
   width: 400px;
-  margin: 50% auto 0;
+  margin: 20% auto 0;
   padding: 30px;
   background: #fff;
   border: 1px solid #eee;
   box-shadow: 0 0 10px 10px #eee;
   border-radius: 10px;
-  transform: translateY(-50%);
+  // transform: translateY(-50%);
 
   .wrap-input {
     width: 100%;
@@ -58,6 +60,10 @@ export default {
       width: 100%;
       font-size: 16px;
       border: 0;
+      -webkit-appearance: none;
+    }
+    inputinput:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset !important;
     }
     ::-webkit-input-placeholder {
       color: #999;
